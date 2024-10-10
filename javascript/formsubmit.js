@@ -1,7 +1,13 @@
+/*
+    Author: Krishna Singh
+    Date: 10-10-2024
+    Description: This javascript file contains methods to simple crud (create, read, update ,delete) operations.
+*/
 
 let employees = JSON.parse(localStorage.getItem('employees')) || [];
 let editingIndex = null;
 
+//saving to local storage
 function saveToLocalStorage() {
     localStorage.setItem('employees', JSON.stringify(employees));
 }
@@ -36,6 +42,7 @@ function validateInputs(name, dob, email, phone) {
     return true;
 }
 
+//handle submit form
 function handleSubmit(event) {
     event.preventDefault(); 
 
@@ -51,8 +58,7 @@ function handleSubmit(event) {
     
     const hobbies = Array.from(document.querySelectorAll('input[name="hobbies"]:checked')) 
                          .map(checkbox => checkbox.nextSibling.textContent.trim()); 
-       
-    
+
     if(editingIndex!==null){
          //Update existing employee
         employees[editingIndex] = {
@@ -86,7 +92,7 @@ function handleSubmit(event) {
     document.querySelector('form').reset();
 }
 
-//for basic table
+//Displaying Basic table data
 function displaybasicTable() {
 
     const basicTableBody = document.querySelector('.basic-table tbody');
@@ -104,15 +110,12 @@ function displaybasicTable() {
                     </tr>`;
         basicTableBody.innerHTML += row;
     })
-
-    // console.log(employees);
 }
 
-// advace table
+//Displaying Basic table data
 function displayAdvancedTable() {
     const advanceTableContainer = document.querySelector('.advance-table-container');
     
- 
     if (employees.length === 0) {
         advanceTableContainer.innerHTML = '<p>No employees available.</p>';
         return;
@@ -149,12 +152,10 @@ function displayAdvancedTable() {
         </table>
     `;
 
-   
     advanceTableContainer.innerHTML = tableHtml;
 }
 
-
-
+//delete employee
 function deleteEmployee(index) {
     employees.splice(index, 1);
     saveToLocalStorage();
@@ -162,12 +163,12 @@ function deleteEmployee(index) {
     displayAdvancedTable();
 }
 
-
+//Edit employee
 function editEmployee(index) {
+
     const employee = employees[index];
 
     //console.log("inside edit employe method ", employee)
-
     document.getElementById('name').value = employee.name;
     document.getElementById('dob').value = employee.dob;
     document.getElementById('email').value = employee.email;
@@ -187,11 +188,9 @@ function editEmployee(index) {
     } 
 
     editingIndex = index;
-    // console.log(employee.hobbies)
 }
 
 
 document.addEventListener('DOMContentLoaded', displayAdvancedTable);
 document.addEventListener('DOMContentLoaded', displaybasicTable);
-
 document.querySelector('form').addEventListener('submit', handleSubmit);

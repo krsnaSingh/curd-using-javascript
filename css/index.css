@@ -10,7 +10,6 @@
    height: 100%;
    margin-top: 50px;
    margin-bottom: 40px;
-   /* border: 1px solid black; */
 }
 
 h2{
@@ -21,7 +20,7 @@ h2{
 .registration-main{
     font-size: 14px;
     background-color: white;
-    width: 70%;
+    width: 90%;
     padding: 20px;
     margin: 25px auto 0;
     border-top: 30px solid rgb(8, 133, 211);
@@ -29,16 +28,8 @@ h2{
     font-size: 14px;
  }
 
-/* .registration-main h3{
-   position: absolute;
-   margin-top: 0px;
-   
-   
-} */
-
-
 .input-name {
-   width: 80%;
+   width: 90%;
    position: relative;  
    margin-top: 15px;
    margin-right: 0px;
@@ -49,6 +40,7 @@ h2{
    width: 20%;  
    margin-left: 30px;
    margin-top: 20px;
+   text-align: left;
  }
 
  .text-name {
@@ -82,7 +74,6 @@ h2{
  }
 
  .input-hobbies{
-   /* border: 1px solid black; */
    outline: none;
    width: 30%;
    position: relative;  
@@ -91,11 +82,6 @@ h2{
    
  }
 
-/* input[type=checkbox] { 
-   vertical-align: middle; 
-   position: relative; 
-
-}  */
 .hobbies{
    margin-top: 2px;
    margin-right: 5px;
@@ -107,35 +93,35 @@ h2{
    
 } 
 
+ /* =================================== Tables styling  ==========================*/
 
- /* =================================== Table styling  ==========================*/
- 
- /* basic table styling */
- .basic-table-container {
-   font-size: 14px;
-   background-color: white;
-   width: 70%;
-   padding: 20px;
-   margin: 25px auto 0;
-   border-top: 30px solid rgb(8, 133, 211);
-   box-shadow: 0 0 0px 2px rgba(8, 133, 211);
-   font-size: 14px;
-   border-collapse: collapse;
- }
+.basic-table-container, .advance-table-container {
+  font-size: 14px;
+  background-color: white;
+  width: 90%; 
+  padding: 20px;
+  margin: 25px auto 0;
+  border-top: 30px solid rgb(8, 133, 211);
+  box-shadow: 0 0 0px 2px rgba(8, 133, 211);
+  border-collapse: collapse;
+  position: relative;
+}
 
- .basic-table {
-   width: 100%;
-   border-collapse: collapse;
-   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
- }
- 
- .basic-table th, .basic-table td {
-   padding: 12px 15px;
-   text-align: left;
-   border: 1px solid #cccccc;
- }
+.basic-table, .advance-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; 
+  white-space: nowrap; 
+}
 
- .editbutton {
+.basic-table th, .basic-table td, .advance-table th, .advance-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #cccccc;
+}
+
+.editbutton {
    background-color: rgb(8, 133, 211);
    color: white;
    padding: 5px 5px; 
@@ -144,7 +130,7 @@ h2{
    margin: 10px;
  }
  
- .deletebutton {
+.deletebutton {
    background-color: rgb(235, 45, 11);
    color: white;
    padding: 5px 5px; 
@@ -152,34 +138,6 @@ h2{
    cursor: pointer;
    margin: 10px;
  }
-
-  /* advance table styling */
-.advance-table-container {
-   font-size: 14px;
-   background-color: white;
-   width: 70%;
-   padding: 20px;
-   margin: 25px auto 0;
-   border-top: 30px solid rgb(8, 133, 211);
-   box-shadow: 0 0 0px 2px rgba(8, 133, 211);
-   font-size: 14px;
-   border-collapse: collapse;
-   position: relative;
-   margin-bottom: 40px;
- }
- 
- .advance-table {
-   width: 100%;
-   border-collapse: collapse;
-   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
- }
- 
- .advance-table th, .advance-table td {
-   padding: 12px 15px;
-   text-align: left;
-   border: 1px solid #cccccc;
- }
-
 
 /* ======================Media Query for Responsive touch=============== */
 
@@ -202,7 +160,6 @@ h2{
        margin-left: 0;
    }
 
-   /* Table styling for mobile */
    .basic-table-container, .advance-table-container {
        width: 100%;
        overflow-x: auto;
@@ -237,7 +194,6 @@ h2{
        margin-left: 0;
    }
 
-   
    .basic-table-container, .advance-table-container {
        width: 100%;
        overflow-x: auto;
