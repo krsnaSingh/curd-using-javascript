@@ -109,7 +109,7 @@ function handleSubmit(event) {
 
 function resetForm() {
     document.querySelector('form').reset();
-    editingIndex = null;
+    // editingIndex = null;
 }
 
 // Row clicked event handler
@@ -117,32 +117,42 @@ function rowclicked(index) {
     editEmployee(index);
 }
 
-// Displaying Basic table data
-function displaybasicTable() {
-    console.log("hello")
+// Update displaying basic table data
+function displayBasicTable() {
+    console.log("hey from basic table")
     const basicTableBody = document.querySelector('.basic-table tbody');
-    basicTableBody.innerHTML = '';
+    
+    // Clear existing rows
+    basicTableBody.innerHTML = ''; 
 
     employees.forEach((employee, index) => {
-        const row = `<tr onclick='rowclicked(${index})'>
-                        <td>${employee.name}</td>
-                        <td>${employee.gender}</td>
-                        <td>${employee.dob}</td>
-                        <td>${employee.email}</td>
-                        <td>${employee.phone}</td>
-                        <td>${employee.hobbies.join(', ')}</td>
-                        <td onclick="event.stopPropagation()">
-                            <button class='editbutton'>Edit</button> | 
-                            <button class="deletebutton" onclick="deleteEmployee(${index})">Delete</button>
-                        </td>
-                    </tr>`;
-        basicTableBody.innerHTML += row;
+        const row = document.createElement('tr');
+        row.setAttribute('onclick', `rowclicked(${index})`);
+        
+        row.innerHTML = `
+            <td>${employee.name}</td>
+            <td>${employee.gender}</td>
+            <td>${employee.dob}</td>
+            <td>${employee.email}</td>
+            <td>${employee.phone}</td>
+            <td>${employee.hobbies.join(', ')}</td>
+            <td onclick="event.stopPropagation()">
+                <button class='editbutton' >Edit</button> | 
+                <button class="deletebutton" onclick="deleteEmployee(${index})">Delete</button>
+            </td>
+        `;
+        
+        basicTableBody.appendChild(row);
     });
 }
 
-// Displaying Advanced table data
+// Update displaying Advanced table data
 function displayAdvancedTable() {
+    console.log("hey from advance table")
     const advanceTableContainer = document.querySelector('.advance-table-container');
+
+    // Clear existing table if any
+    advanceTableContainer.innerHTML = '';
 
     if (employees.length === 0) {
         advanceTableContainer.innerHTML = '<p>No employees available.</p>';
@@ -176,6 +186,17 @@ function displayAdvancedTable() {
                     <th>Hobbies</th>
                     ${employees.map(employee => `<td>${employee.hobbies.join(', ')}</td>`).join('')}
                 </tr>
+
+                <tr>
+                    <th>Actions</th>
+                    ${employees.map((employee, index) => `
+                        <td>
+                            <button class='editbutton' >Edit ${index}</button>
+                            <button class="deletebutton" onclick="deleteEmployee(${index})">Delete</button>
+                        </td>
+                    `).join('')}
+                </tr>
+
             </thead>
         </table>
     `;
@@ -210,7 +231,7 @@ function editEmployee(index) {
 
 // Display tables on DOMContentLoaded
 function displayTables() {
-    displaybasicTable();
+    displayBasicTable();
     displayAdvancedTable();
 }
 
