@@ -36,14 +36,14 @@ h2{
    display: flex; 
  }
 
- .label {
+.label {
    width: 20%;  
    margin-left: 30px;
    margin-top: 20px;
    text-align: left;
  }
 
- .text-name {
+.text-name {
    width: 80%; 
    padding: 8px 0 8px 20px;
    outline: none;
@@ -52,19 +52,55 @@ h2{
    margin-top: 10px;
  }
 
- .text-name:focus{
+.span-name {
+  width: 90%;
+  position: relative;  
+  margin-top: 0px;
+  margin-right: 0px;
+  display: flex; 
+  
+}
+
+.span-text{
+   /* border: 1px solid #cccccc; */
+  margin-left: x; 
+  padding: 8px 0 8px 20px;
+  outline: none;
+  margin-top: 2px;
+  color: red;
+  margin-left: 280px;
+ }
+
+.text-name:focus{
    border: 1px solid blue;
  }
 
+.error-border{
+  border: 1px solid red;
+}
+
+
  
- .button {
+.submit-button {
    background-color: rgb(8, 133, 211);
    color: white;
    padding: 10px 20px; 
    border: none;
    cursor: pointer;
-   margin-left: 22%; 
- }
+   margin-left: 20%; 
+   margin-top: 15px;
+   
+   
+}
+
+.reset-button {
+  background-color: rgb(241, 103, 10);
+  color: white;
+  padding: 10px 20px; 
+  border: none;
+  cursor: pointer;
+  
+}
 
  .radio-button{
    width: 65%; 
@@ -112,7 +148,6 @@ h2{
   border-collapse: collapse;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   overflow-x: auto; 
-  white-space: nowrap; 
 }
 
 .basic-table th, .basic-table td, .advance-table th, .advance-table td {
@@ -160,6 +195,16 @@ h2{
        margin-left: 0;
    }
 
+  .submit-button {
+      padding: 10px 20px; 
+      margin-left: 22%; 
+    }
+  
+  .reset-button {
+    padding: 10px 20px; 
+    margin-left: 20px; 
+  }
+
    .basic-table-container, .advance-table-container {
        width: 100%;
        overflow-x: auto;
@@ -206,6 +251,17 @@ h2{
    .basic-table th, .advance-table th, .basic-table td, .advance-table td {
        padding: 10px 12px;
    }
+
+   .submit-button {
+    padding: 5px 10px; 
+    margin-left: 22%; 
+  }
+
+  .reset-button {
+    padding: 5px 10px; 
+    margin-left: 10px; 
+  }
+
 }
 
 

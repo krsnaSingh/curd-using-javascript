@@ -17,18 +17,21 @@
         <div class="registration-main">
 
             <div class="form-container">
-
-                <form action="#" method="post">
-                  
+                <form action="" method="GET">
                     <div class="input-name">
                         <label for="name"  class="label">Name :</label>
                         <input type="text" id="name" name="name" class="text-name" placeholder="Enter Name"  required >
+                      
                     </div>
+
+                    <div class="span-name">
+                        <span class="span-text" id="nameError"></span>
+                    </div>
+                   
 
                     <div class="input-name">
                         <label for="gender" class="label">Gender:</label>
                         <div class="radio-button">
-
                             <input type="radio" name="gender" id="1" checked class="radio-input">
                             <label style="margin-right: 10px;">Male</label>
                             <input type="radio" name="gender" id="2" class="radio-input">
@@ -41,14 +44,24 @@
                         <input type="date" id="dob" class="text-name dob" name="dob" max="" required>
                     </div>
 
+                    <div class="span-name">
+                        <span class="span-text" id="dobError"></span>
+                    </div>
+
                     <div class="input-name">
                         <label for="email" class="label">Email:</label>
                         <input type="email" id="email" placeholder="Enter Email" class="text-name" name="email" required >
+                    </div>
+                    <div class="span-name">
+                        <span class="span-text" id="emailError"></span>
                     </div>
 
                     <div class="input-name">
                         <label for="phone" class="label">Phone No:</label>
                         <input type="tel" id="phone" placeholder="Enter Phone No" class="text-name" name="phone">
+                    </div>
+                    <div class="span-name">
+                        <span class="span-text" id="phoneError"></span>
                     </div>
 
                     <div class="input-name">
@@ -60,10 +73,11 @@
                         </div>
                     </div>
 
-                    <div class="input-name">    
-                        <input type="submit" class="button" value="Submit">
+                    <div class="input-button">    
+
+                        <input type="submit" class="submit-button" value="Submit">
+                        <input type="submit" onclick="resetForm()" class="reset-button" value="reset">
                     </div>
-    
                 </form>
                
             </div>
