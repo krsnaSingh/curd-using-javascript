@@ -7,10 +7,6 @@
 let employees = JSON.parse(localStorage.getItem('employees')) || [];
 let editingIndex = null;
 
-//disable future dates
-
-
-
 // Saving to local storage
 function saveToLocalStorage() {
     localStorage.setItem('employees', JSON.stringify(employees));
@@ -38,7 +34,6 @@ function validateName() {
 }
 
 function validateDOB() {
-
     const dobDate = new Date(document.getElementById("dob").value);
     const today = new Date();
     if (dobDate >= today) {
@@ -78,7 +73,6 @@ function clearError(field) {
 
 // Insert a new row or update an existing one in the basic table
 function updateBasicTableRow(employee, index) {
-    console.log("employee length ", employees.length ," index value ",index)
     const basicTableBody = document.querySelector('.basic-table tbody');
     let row = document.getElementById(`row-${index}`);
 
@@ -109,7 +103,43 @@ function displayBasicTable() {
     });
 }
 
-// Create the advanced table once
+// Insert a new row or update an existing one in the advanced table
+function updateAdvanceTable(employee, index) {
+    let nameCell = document.getElementById(`adv-cell-name-${index}`);
+    
+    if (!nameCell) {
+        // Row doesn't exist, create new rows
+        const advRowName = document.getElementById('adv-row-name');
+        const advRowGender = document.getElementById('adv-row-gender');
+        const advRowDob = document.getElementById('adv-row-dob');
+        const advRowEmail = document.getElementById('adv-row-email');
+        const advRowPhone = document.getElementById('adv-row-phone');
+        const advRowHobbies = document.getElementById('adv-row-hobbies');
+        const advRowActions = document.getElementById('adv-row-actions');
+
+        advRowName.innerHTML += `<td id="adv-cell-name-${index}">${employee.name}</td>`;
+        advRowGender.innerHTML += `<td id="adv-cell-gender-${index}">${employee.gender}</td>`;
+        advRowDob.innerHTML += `<td id="adv-cell-dob-${index}">${employee.dob}</td>`;
+        advRowEmail.innerHTML += `<td id="adv-cell-email-${index}">${employee.email}</td>`;
+        advRowPhone.innerHTML += `<td id="adv-cell-phone-${index}">${employee.phone}</td>`;
+        advRowHobbies.innerHTML += `<td id="adv-cell-hobbies-${index}">${employee.hobbies.join(', ')}</td>`;
+        advRowActions.innerHTML += `
+            <td id="adv-cell-action-${index}">
+                <a onclick="editEmployee(${index})"><i class="fa-solid fa-user-pen" style="color: #080b35;"></i></a> |
+                <a onclick="deleteEmployee(${index})"><i class="fa-solid fa-trash" style="color: #f20d0d;"></i></a>
+            </td>`;
+    } else {
+        // Row exists, update the cells
+        nameCell.innerHTML = employee.name;
+        document.getElementById(`adv-cell-gender-${index}`).innerHTML = employee.gender;
+        document.getElementById(`adv-cell-dob-${index}`).innerHTML = employee.dob;
+        document.getElementById(`adv-cell-email-${index}`).innerHTML = employee.email;
+        document.getElementById(`adv-cell-phone-${index}`).innerHTML = employee.phone;
+        document.getElementById(`adv-cell-hobbies-${index}`).innerHTML = employee.hobbies.join(', ');
+    }
+}
+
+// Create the advanced table initially
 function createAdvancedTable() {
     const advanceTableContainer = document.querySelector('.advance-table-container');
 
@@ -118,61 +148,50 @@ function createAdvancedTable() {
 
     // Create table HTML
     let tableHtml = `
-        <table class="advance-table">              
-            <tbody>
-                <tr>
-                    <th>Name</th>
-                    ${employees.map(employee => `<td>${employee.name}</td>`).join('')}
-                </tr>
-                <tr>
-                    <th>Gender</th>
-                    ${employees.map(employee => `<td>${employee.gender}</td>`).join('')}
-                </tr>
-                <tr>
-                    <th>DOB</th>
-                    ${employees.map(employee => `<td>${employee.dob}</td>`).join('')}
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    ${employees.map(employee => `<td>${employee.email}</td>`).join('')}
-                </tr>
-                <tr>
-                    <th>Phone No</th>
-                    ${employees.map(employee => `<td>${employee.phone}</td>`).join('')}
-                </tr>
-                <tr>
-                    <th>Hobbies</th>
-                    ${employees.map(employee => `<td>${employee.hobbies.join(', ')}</td>`).join('')}
-                </tr>
-                <tr>
-                    <th>Actions</th>
-                    ${employees.map((_, index) => `
-                        <td>
-                            <a onclick="editEmployee(${index})"><i class="fa-solid fa-user-pen" style="color: #080b35;"></i></a> |
-                            <a onclick="deleteEmployee(${index})"><i class="fa-solid fa-trash" style="color: #f20d0d;"></i></a>
-                        </td>
-                    `).join('')}
-                </tr>
-            </tbody>
-        </table>
-    `;
+    <table class="advance-table">              
+        <tbody>
+            <tr id="adv-row-name">
+                <th>Name</th>
+            </tr>
+            <tr id="adv-row-gender">
+                <th>Gender</th>
+            </tr>
+            <tr id="adv-row-dob">
+                <th>DOB</th>
+            </tr>
+            <tr id="adv-row-email">
+                <th>Email</th>
+            </tr>
+            <tr id="adv-row-phone">
+                <th>Phone No</th>
+            </tr>
+            <tr id="adv-row-hobbies">
+                <th>Hobbies</th>
+            </tr>
+            <tr id="adv-row-actions">
+                <th>Actions</th>
+            </tr>
+        </tbody>
+    </table>
+`;
 
     advanceTableContainer.innerHTML = tableHtml;
 }
 
-// Display the advanced table once
+// Display the advanced table initially
 function displayAdvancedTable() {
-    createAdvancedTable();  
+     createAdvancedTable();  
+    employees.forEach((employee, index) => {
+        updateAdvanceTable(employee, index);
+    });
 }
-
 
 // Display both tables on DOMContentLoaded
 function displayTables() {
 
     //disable future date
     var today = new Date().toISOString().split('T')[0];
-    console.log(today)
-    document.getElementById('dob').setAttribute("max",today)
+    document.getElementById('dob').setAttribute("max", today);
 
     displayBasicTable();
     displayAdvancedTable();
@@ -204,12 +223,12 @@ function handleSubmit(event) {
     if (editingIndex !== null) {
         employees[editingIndex] = employeeData;
         updateBasicTableRow(employeeData, editingIndex);
-       displayAdvancedTable();
+        updateAdvanceTable(employeeData, editingIndex); 
         editingIndex = null;
     } else {
-        employees.push(employeeData); 
+        employees.push(employeeData);
         updateBasicTableRow(employeeData, employees.length - 1);
-        displayAdvancedTable();
+        updateAdvanceTable(employeeData, employees.length - 1); 
     }
 
     saveToLocalStorage();
@@ -227,19 +246,30 @@ function deleteEmployee(index) {
     employees.splice(index, 1);
     saveToLocalStorage();
 
+    // Remove from basic table
     const basicRow = document.getElementById(`row-${index}`);
-    const advRow = document.getElementById(`adv-row-${index}`);
     if (basicRow) basicRow.remove();
-    if (advRow) advRow.remove();
 
-    displayTables();
-    
+    // Remove cells from the advanced table
+    const cellsToRemove = [
+        document.getElementById(`adv-cell-name-${index}`),
+        document.getElementById(`adv-cell-gender-${index}`),
+        document.getElementById(`adv-cell-dob-${index}`),
+        document.getElementById(`adv-cell-email-${index}`),
+        document.getElementById(`adv-cell-phone-${index}`),
+        document.getElementById(`adv-cell-hobbies-${index}`),
+        document.getElementById(`adv-cell-action-${index}`)
+
+    ];
+
+    cellsToRemove.forEach(cell => {
+        if (cell) cell.remove();
+    });
 }
 
 // Edit employee
 function editEmployee(index) {
     const employee = employees[index];
-
     document.getElementById('name').value = employee.name;
     document.getElementById('dob').value = employee.dob;
     document.getElementById('email').value = employee.email;
@@ -251,11 +281,10 @@ function editEmployee(index) {
 
     document.getElementById(employee.gender === 'Male' ? '1' : '2').checked = true;
 
+
     editingIndex = index;
 }
 
-
-
-// Display both tables when the page loads
+// Add event listeners
 document.addEventListener('DOMContentLoaded', displayTables);
 document.querySelector('form').addEventListener('submit', handleSubmit);
