@@ -4,119 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/signup-form.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/tables.css">
     <title>Employee Management</title>
     <script src="../javascript/formsubmit.js" defer></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 </head>
 <body>
     <div class="hero">
-
-        <h2>Employee</h2>
-
-        <!--registration conatiner -->
+        <h2>Employee Form</h2>
         <div class="registration-main">
-
-            <div class="form-container">
-                <form action="" method="GET">
-                    <div class="input-name">
-                        <label for="name"  class="label">Name :</label>
-                        <input type="text" id="name" name="name" class="text-name" placeholder="Enter Name"  required >
-                      
-                    </div>
-
-                    <div class="span-name">
-                        <span class="span-text" id="nameError"></span>
-                    </div>
-                   
-
-                    <div class="input-name">
-                        <label for="gender" class="label">Gender:</label>
-                        <div class="radio-button">
-                            <input type="radio" name="gender" id="1" checked class="radio-input">
-                            <label style="margin-right: 10px;">Male</label>
-                            <input type="radio" name="gender" id="2" class="radio-input">
-                            <label>Female</label>
+            <form id="employeeForm">
+                <div class="form-flex">
+                    <div class="input-group">
+                        <label class="label" for="name">Name :</label>
+                        <div class="input-span-group">
+                            <input class="text-input" type="text" id="name" placeholder="Enter your name" required />
+                            <span class="span-text" id="nameError"></span>
                         </div>
+                       
                     </div>
 
-                    <div class="input-name">
+                    <div class="input-group">
+                        <label class="label">Gender:</label>
+                        <div class="radio-group">
+                           <input type="radio" name="gender" id="1" checked class="radio-input">
+                           <label>Male</label>
+                           <input type="radio" name="gender" id="2" class="radio-input">
+                           <label>Female</label>
+                        </div>
+                        <span class="span-text" id="genderError"></span>
+                    </div>
+
+                    <div class="input-group">
                         <label for="dob" class="label">Date of Birth:</label>
-                        <input type="date" id="dob" class="text-name dob" name="dob" max="" required>
-                    </div>
-
-                    <div class="span-name">
-                        <span class="span-text" id="dobError"></span>
-                    </div>
-
-                    <div class="input-name">
-                        <label for="email" class="label">Email:</label>
-                        <input type="email" id="email" placeholder="Enter Email" class="text-name" name="email" required >
-                    </div>
-                    <div class="span-name">
-                        <span class="span-text" id="emailError"></span>
-                    </div>
-
-                    <div class="input-name">
-                        <label for="phone" class="label">Phone No:</label>
-                        <input type="tel" id="phone" placeholder="Enter Phone No" class="text-name" name="phone">
-                    </div>
-                    <div class="span-name">
-                        <span class="span-text" id="phoneError"></span>
-                    </div>
-
-                    <div class="input-name">
-                        <label for="hobbies" class="label">Hobbies:</label>
-                        <div class="input-hobbies">
-                            <label class="labelcheckbox">  <input type="checkbox" class="hobbies" name="hobbies" id="id_cricket" value="Cricket">Cricket </label>
-                            <label class="labelcheckbox">  <input type="checkbox" class="hobbies" name="hobbies" value="Chess">Chess </label>
-                            <label class="labelcheckbox">  <input type="checkbox" class="hobbies" name="hobbies" value="Music">Music </label>
+                        <div class="input-span-group">
+                            <input type="date" id="dob" class="text-input" name="dob"  required>
+                            <span class="span-text" id="dobError"></span>
                         </div>
+                       
                     </div>
 
-                    <div class="input-button">    
-
-                        <input type="submit" class="submit-button" value="Submit">
-                        <input type="submit" onclick="resetForm()" class="reset-button" value="reset">
+                    <div class="input-group">
+                        <label class="label" for="email">Email:</label>
+                        <div class="input-span-group">
+                            <input class="text-input" type="email" id="email" placeholder="Enter your email" required />
+                             <span class="span-text" id="emailError"></span>
+                        </div>
+                        
                     </div>
-                </form>
-               
-            </div>
 
+                    <div class="input-group">
+                        <label for="phone" class="label">Phone No:</label>
+                        <div class="input-span-group">
+                            <input type="tel" id="phone" class="text-input" placeholder="Enter Phone No" name="phone" required>
+                            <span class="span-text" id="phoneError"></span>
+                        </div>
+                       
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Hobbies:</label>
+                        <div class="hobbies-group">
+                            <label> <input type="checkbox" class="hobbies" name="hobbies" id="id_cricket" value="Cricket">Cricket </label>
+                            <label> <input type="checkbox" class="hobbies" name="hobbies" value="Chess">Chess </label>
+                            <label> <input type="checkbox" class="hobbies" name="hobbies" value="Music">Music </label>
+                        </div>
+                        <span class="span-text" id="hobbiesError"></span>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="submit" class="submit-button">Submit</button>
+                        <button type="reset" class="reset-button" onclick="resetForm()">Reset</button>
+                    </div>
+                </div>
+            </form>
         </div>
 
-        <!--End of registration conatiner -->
+         <!-- start of basic table -->
+         <h2>Basic</h2>
 
-        <!-- start of basic table -->
-        <h2>Basic</h2>
+         <div class="basic-table-container">
+             <table class="basic-table">
+                 <thead>
+                     <tr>
+                         <th>Name</th>
+                         <th>Gender</th>
+                         <th>DOB</th>
+                         <th>Email</th>
+                         <th>Phone No</th>
+                         <th>Hobbies</th>
+                         <th>Action</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                 </tbody>
+             </table>
+         </div>
+         <!-- End of basic table -->
 
-        <div class="basic-table-container">
-            <table class="basic-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Gender</th>
-                        <th>DOB</th>
-                        <th>Email</th>
-                        <th>Phone No</th>
-                        <th>Hobbies</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-        <!-- End of basic table -->
-
-        <!-- start of advance table -->
+         <!-- start of advance table -->
         <h2>Advance</h2>
 
         <div class="advance-table-container">
         </div>
         <!-- end of advance table -->
-      
+
     </div>
 </body>
 </html>
-
-
