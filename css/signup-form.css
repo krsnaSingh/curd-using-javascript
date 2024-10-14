@@ -14,12 +14,12 @@
    align-items: center;
  }
  
- h2 {
+h2 {
    text-align: center;
    margin-top: 20px;
- }
+}
  
- .registration-main {
+.registration-main {
    background-color: white;
    width: 70%;
    padding: 20px;
