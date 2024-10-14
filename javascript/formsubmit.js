@@ -280,8 +280,6 @@ function editEmployee(index) {
     });
 
     document.getElementById(employee.gender === 'Male' ? '1' : '2').checked = true;
-
-
     editingIndex = index;
 }
 
