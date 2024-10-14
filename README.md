@@ -52,7 +52,7 @@ The application includes the following validation rules:
 
 ## Screenshorts
 ![Screenshot from 2024-10-14 13-12-51](https://github.com/user-attachments/assets/1974b7e0-459f-4d2e-b716-e911636d9aec)
-![Screenshot from 2024-10-14 13-13-44](https://github.com/user-attachments/assets/d47dd67d-1dae-4af8-ab8b-7660951d0a8d)
+![Screenshot from 2024-10-14 14-19-59](https://github.com/user-attachments/assets/8aa8496b-fa0f-46f8-92f3-2a49e378f9e1)
 ![Screenshot from 2024-10-14 13-14-03](https://github.com/user-attachments/assets/61efca48-77f8-4c51-9522-4aee0d0a24d3)
 ![Screenshot from 2024-10-14 13-14-46](https://github.com/user-attachments/assets/06bee8b4-69a3-4a22-9ce5-fd205a962d01)
 ![Screenshot from 2024-10-14 13-15-30](https://github.com/user-attachments/assets/ad02dd42-2620-429c-a562-a451d598c0d7)
